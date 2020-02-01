@@ -1,0 +1,116 @@
+﻿<Window x:Class="NISTMLTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NISTMLTest"
+        mc:Ignorable="d"
+        Title="Handwriting Recognition" Height="490" Width="340" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>            
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Test Data" Grid.Row="0" Margin="5" BorderBrush="Blue" BorderThickness="2">
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="25,5,5,3">Test Data:</Label>
+                <TextBox Margin="3" Name="TxtTestData" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140">No Data</TextBox>
+                <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Width="60" Margin="3,8" Name="BtnTestData" Click="BtnTestData_Click">Browse</Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Test Sample" Grid.Row="1" Margin="5" BorderBrush="Blue" BorderThickness="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <Label Margin="15,3,3,3" HorizontalAlignment="Right">Sample Nr:</Label>
+                    <TextBox Margin="3" HorizontalAlignment="left" Width="80" Name="TxtSampleNr" VerticalAlignment="Center">0</TextBox>
+                </StackPanel>
+                <Border Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Width="86" Height="86">
+                    <Canvas   Width="84" Height="84" Background="Beige" Name="SampleCanvas"></Canvas>
+                </Border>
+                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">TARGET</Label>
+                <TextBox Grid.Row="2" Grid.Column="1" Name="txtTarget" FontSize="32" FontWeight="Bold" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" Width="50"></TextBox>
+                <Label Grid.Row="4" Grid.Column="0" Margin="5,16,5,5">PREDICTED RESULT:</Label>
+                <TextBox Grid.Row="4" Grid.Column="1" Name="txtResult" Margin="5" FontSize="32" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" Width="50"></TextBox>
+                <Button Grid.Row="5" Grid.Column="0" Margin="10,5,10,10" Width="80" Name="BtnTest" Click="BtnTest_Click">TEST</Button>
+                <Button Grid.Row="5" Grid.Column="1" Margin="10,5,10,10" Width="80" Name="BtnNext" Click="BtnNext_Click" >NEXT</Button>
+
+                <Grid Grid.Row="0" Grid.RowSpan="6" Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right"   Margin="3,0,15,0">OUTPUT:</Label>
+                    <Label Grid.Row="1" Grid.Column="0" Margin="3,0" Height="20" Padding="5,0" HorizontalContentAlignment="Right">0:</Label>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="3,0" Height="20" Padding="5,0" Name="TxtOutput0"></TextBox>
+                    <Label Grid.Row="2" Grid.Column="0" Margin="3,0" Height="20" Padding="5,0" HorizontalContentAlignment="Right">1:</Label>
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="3,0" Height="20" Padding="5,0" Name="TxtOutput1"></TextBox>
+                    <Label Grid.Row="3" Grid.Column="0" Margin="3,0" Height="20" Padding="5,0" HorizontalContentAlignment="Right">2:</Label>
+                    <TextBox Grid.Row="3" Grid.Column="1" Margin="3,0" Height="20" Padding="5,0" Name="TxtOutput2"></TextBox>
+                    <Label Grid.Row="4" Grid.Column="0" Margin="3,0" Height="20" Padding="5,0" HorizontalContentAlignment="Right">3:</Label>
+                    <TextBox Grid.Row="4" Grid.Column="1" Margin="3,0" Height="20" Padding="5,0" Name="TxtOutput3"></TextBox>
+                    <Label Grid.Row="5" Grid.Column="0" Margin="3,0" Height="20" Padding="5,0" HorizontalContentAlignment="Right">4:</Label>
+                    <TextBox Grid.Row="5" Grid.Column="1" Margin="3,0" Height="20" Padding="5,0" Name="TxtOutput4"></TextBox>
+                    <Label Grid.Row="6" Grid.Column="0" Margin="3,0" Height="20" Padding="5,0" HorizontalContentAlignment="Right">5:</Label>
+                    <TextBox Grid.Row="6" Grid.Column="1" Margin="3,0" Height="20" Padding="5,0" Name="TxtOutput5"></TextBox>
+                    <Label Grid.Row="7" Grid.Column="0" Margin="3,0" Height="20" Padding="5,0" HorizontalContentAlignment="Right">6:</Label>
+                    <TextBox Grid.Row="7" Grid.Column="1" Margin="3,0" Height="20" Padding="5,0" Name="TxtOutput6"></TextBox>
+                    <Label Grid.Row="8" Grid.Column="0" Margin="3,0" Height="20" Padding="5,0" HorizontalContentAlignment="Right">7:</Label>
+                    <TextBox Grid.Row="8" Grid.Column="1" Margin="3,0" Height="20" Padding="5,0" Name="TxtOutput7"></TextBox>
+                    <Label Grid.Row="9" Grid.Column="0" Margin="3,0" Height="20" Padding="5,0" HorizontalContentAlignment="Right">8:</Label>
+                    <TextBox Grid.Row="9" Grid.Column="1" Margin="3,0" Height="20" Padding="5,0" Name="TxtOutput8"></TextBox>
+                    <Label Grid.Row="10" Grid.Column="0" Margin="3,0" Height="20" Padding="5,0" HorizontalContentAlignment="Right">9:</Label>
+                    <TextBox Grid.Row="10" Grid.Column="1" Margin="3,0,3,3" Height="20" Padding="5,0" Name="TxtOutput9"></TextBox>
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Test All Data" Grid.Row="2" Margin="5" BorderBrush="Blue" BorderThickness="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Margin="10" Width="80" Name="BtnAll" Click="BtnAll_Click">TEST ALL</Button>
+                    <Label Margin="10" HorizontalAlignment="Center">ACCURACY:</Label>
+                    <TextBox Margin="10" FontSize="18" FontWeight="Bold" Width="80" HorizontalContentAlignment="Center" Name="txtPercentOK">0.00</TextBox>
+                </StackPanel>
+                <Button Grid.Row="1" Margin="10" Width="120" Name="BtnFailed" Click="BtnFailed_Click">Show Failed Samples</Button>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
